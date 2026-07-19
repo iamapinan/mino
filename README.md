@@ -6,6 +6,13 @@ A small cartoon pet that lives in the macOS menu bar. This MVP uses Tauri 2, van
 
 **[Download Mimo for Apple Silicon](https://github.com/iamapinan/mino/releases/latest)**
 
+After dragging Mimo to Applications, right-click `Mimo.app` and choose **Open** the first time. If macOS still shows an old “damaged” quarantine warning, run:
+
+```bash
+xattr -dr com.apple.quarantine /Applications/Mimo.app
+open /Applications/Mimo.app
+```
+
 Mimo can also chat in Thai or English using a small local context engine. Replies consider keywords, time of day, and the pet's current needs. No account, network request, or AI API is required.
 
 Choose between four cartoon companions: Mimo the forest cat, Rexo the tiny dinosaur, Mallow the soft rabbit, and Pingo the little penguin. Each companion can be given a custom name, which is used by the chat UI and menu bar tooltip. The selected character is also reflected in the macOS menu bar icon.
