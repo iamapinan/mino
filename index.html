@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Mimo</title>
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="day" id="day-label">DAY 1</p>
+          <h1 id="pet-name">Mimo</h1>
+        </div>
+        <button class="icon-button" id="mute-button" type="button" aria-label="Toggle sound">SFX</button>
+      </header>
+
+      <section class="room" aria-label="Mimo's room">
+        <div class="wall-specks" aria-hidden="true"></div>
+        <p class="thought" id="thought">I'm feeling cozy.</p>
+        <div id="pet" class="character-sprite" role="img" aria-label="Mimo, your cartoon pet"></div>
+        <div id="pet-effects" class="pet-effects" aria-hidden="true"><i></i><i></i><i></i></div>
+        <div class="floor" aria-hidden="true"></div>
+      </section>
+
+      <section class="status" aria-label="Pet status">
+        <div class="status-row">
+          <div class="status-label"><span>FULL</span><output id="fullness-value">82</output></div>
+          <div class="meter"><span id="fullness-meter"></span></div>
+        </div>
+        <div class="status-row">
+          <div class="status-label"><span>JOY</span><output id="joy-value">76</output></div>
+          <div class="meter"><span id="joy-meter"></span></div>
+        </div>
+        <div class="status-row">
+          <div class="status-label"><span>CLEAN</span><output id="clean-value">88</output></div>
+          <div class="meter"><span id="clean-meter"></span></div>
+        </div>
+        <div class="status-row">
+          <div class="status-label"><span>ENERGY</span><output id="energy-value">70</output></div>
+          <div class="meter"><span id="energy-meter"></span></div>
+        </div>
+      </section>
+
+      <section class="actions" aria-label="Care actions">
+        <button data-action="feed" type="button"><span>FEED</span><small>snack</small></button>
+        <button data-action="play" type="button"><span>PLAY</span><small>bounce</small></button>
+        <button data-action="clean" type="button"><span>CLEAN</span><small>scrub</small></button>
+        <button data-action="sleep" type="button"><span id="sleep-label">SLEEP</span><small id="sleep-hint">rest</small></button>
+        <button data-action="drive" type="button"><span>DRIVE</span><small>road trip</small></button>
+        <button data-action="fly" type="button"><span>FLY</span><small>take off</small></button>
+      </section>
+
+      <section class="chat" aria-label="Chat with Mimo">
+        <div class="chat-messages" id="chat-messages" aria-live="polite"></div>
+        <form id="chat-form">
+          <label class="sr-only" for="chat-input">Message Mimo</label>
+          <input id="chat-input" type="text" maxlength="100" autocomplete="off" placeholder="คุยกับ Mimo..." />
+          <button type="submit">SEND</button>
+        </form>
+      </section>
+
+      <footer>
+        <span id="stage-label">TINY PAL</span>
+        <div class="footer-actions">
+          <button id="scene-button" type="button">SCENE</button>
+          <button id="pal-button" type="button">PAL</button>
+          <button id="name-button" type="button">NAME</button>
+          <button id="reset-button" type="button">RESET</button>
+        </div>
+      </footer>
+    </main>
+
+    <dialog class="picker-dialog" id="character-dialog" aria-labelledby="character-title">
+      <div class="dialog-head">
+        <div>
+          <p>YOUR COMPANION</p>
+          <h2 id="character-title">Choose a pal</h2>
+        </div>
+        <button id="close-character-dialog" type="button" aria-label="Close character picker">CLOSE</button>
+      </div>
+      <div class="character-grid">
+        <button class="character-option" data-character="mimo" type="button">
+          <span class="character-preview" data-preview="mimo" aria-hidden="true"></span>
+          <strong>Mimo</strong><small>forest cat</small>
+        </button>
+        <button class="character-option" data-character="rexo" type="button">
+          <span class="character-preview" data-preview="rexo" aria-hidden="true"></span>
+          <strong>Rexo</strong><small>tiny dinosaur</small>
+        </button>
+        <button class="character-option" data-character="mallow" type="button">
+          <span class="character-preview" data-preview="mallow" aria-hidden="true"></span>
+          <strong>Mallow</strong><small>soft rabbit</small>
+        </button>
+        <button class="character-option" data-character="pingo" type="button">
+          <span class="character-preview" data-preview="pingo" aria-hidden="true"></span>
+          <strong>Pingo</strong><small>little penguin</small>
+        </button>
+      </div>
+    </dialog>
+
+    <dialog class="picker-dialog name-dialog" id="name-dialog" aria-labelledby="name-title">
+      <div class="dialog-head">
+        <div>
+          <p>MAKE IT YOURS</p>
+          <h2 id="name-title">Name your pal</h2>
+        </div>
+        <button id="close-name-dialog" type="button" aria-label="Close name dialog">CLOSE</button>
+      </div>
+      <form id="name-form">
+        <label for="name-input">ชื่อใหม่</label>
+        <input id="name-input" type="text" maxlength="18" autocomplete="off" required />
+        <button type="submit">SAVE NAME</button>
+      </form>
+    </dialog>
+
+    <dialog class="picker-dialog" id="scene-dialog" aria-labelledby="scene-title">
+      <div class="dialog-head">
+        <div>
+          <p>CARTOON WORLD</p>
+          <h2 id="scene-title">Choose a scene</h2>
+        </div>
+        <button id="close-scene-dialog" type="button" aria-label="Close scene picker">CLOSE</button>
+      </div>
+      <div class="scene-grid">
+        <button class="scene-option" data-scene-option="room" type="button">
+          <span class="scene-preview room-preview" aria-hidden="true"></span>
+          <strong>Cozy room</strong><small>soft and quiet</small>
+        </button>
+        <button class="scene-option" data-scene-option="garden" type="button">
+          <span class="scene-preview garden-preview" aria-hidden="true"></span>
+          <strong>Sunny garden</strong><small>fresh green grass</small>
+        </button>
+        <button class="scene-option" data-scene-option="night" type="button">
+          <span class="scene-preview night-preview" aria-hidden="true"></span>
+          <strong>Starry night</strong><small>calm moonlight</small>
+        </button>
+        <button class="scene-option" data-scene-option="seaside" type="button">
+          <span class="scene-preview seaside-preview" aria-hidden="true"></span>
+          <strong>Seaside</strong><small>sun and sand</small>
+        </button>
+      </div>
+    </dialog>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
