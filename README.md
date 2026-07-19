@@ -1,6 +1,10 @@
+![Mimo — a tiny macOS menu bar companion](docs/mimo-cover.jpg)
+
 # Mimo
 
 A small cartoon pet that lives in the macOS menu bar. This MVP uses Tauri 2, vanilla TypeScript, and a tiny Rust tray layer.
+
+**[Download Mimo for Apple Silicon](https://github.com/iamapinan/mino/releases/latest)**
 
 Mimo can also chat in Thai or English using a small local context engine. Replies consider keywords, time of day, and the pet's current needs. No account, network request, or AI API is required.
 
